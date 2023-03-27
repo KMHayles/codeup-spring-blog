@@ -17,11 +17,6 @@ public class DiceController {
         return "roll-dice";
     }
 
-//    @PostMapping("/roll-dice/{guess}")
-//    public String userRoll(){
-//        return "redirect:/";
-//    }
-
     @GetMapping("/roll-dice/{guess}")
     public String rollResult(@PathVariable int guess, Model model) {
         int roll = new Random().nextInt(6) + 1;
