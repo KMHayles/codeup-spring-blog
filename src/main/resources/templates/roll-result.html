@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Random Number</title>
+</head>
+
+<body>
+    <h1>Roll Dice</h1>
+    <p>You guessed <span th:text="${guess}"></span>.</p>
+    <p>The dice rolled <span th:text="${roll}"></span>.</p>
+    <p><span th:text="${message}"></span></p>
+    <p><a th:href="@{/roll-dice}">Play again</a></p>
+
+</body>
+</html>
