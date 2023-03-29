@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -21,12 +19,7 @@ public class PostController {
 
     @GetMapping("/posts")
     public String returnPosts(Model model) {
-        model.addAttribute("posts", postDao.findAll());
-//        List<Post> posts = new ArrayList<>(Arrays.asList(
-//                new Post(1, "Why I Love Java ", "Body text for post 1"),
-//                new Post(2, "What is JSON?", "Body text for post 2"),
-//                new Post(3, "ChatGPT is my girlfriend", "Body text for post 3")
-//        ));
+
          List<Post> posts = postDao.findAll();
 //
         model.addAttribute("posts", posts);
@@ -35,14 +28,19 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String returnPost(@PathVariable Long id, Model model) {
-        Post post = new Post(1, "Title test", "Body test");
+        Post post = postDao.getAdById(id);
         model.addAttribute("post", post);
         return "posts/show";
     }
 
-    @GetMapping("/post/create")
+    @GetMapping("/posts/create")
     public String createTheProduct() {
-        Post post = new Post("Test3 title","this is a test" );
+        return "/posts/create";
+    }
+
+    @PostMapping("/posts")
+    public String createPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body) {
+        Post post = new Post(title, body);
         postDao.save(post);
         return "redirect:/posts";
     }
