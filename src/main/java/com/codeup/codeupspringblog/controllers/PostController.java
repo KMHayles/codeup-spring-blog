@@ -27,8 +27,9 @@ public class PostController {
 //                new Post(2, "What is JSON?", "Body text for post 2"),
 //                new Post(3, "ChatGPT is my girlfriend", "Body text for post 3")
 //        ));
+         List<Post> posts = postDao.findAll();
 //
-//        model.addAttribute("posts", posts);
+        model.addAttribute("posts", posts);
         return "posts/index";
     }
 
@@ -37,6 +38,13 @@ public class PostController {
         Post post = new Post(1, "Title test", "Body test");
         model.addAttribute("post", post);
         return "posts/show";
+    }
+
+    @GetMapping("/post/create")
+    public String createTheProduct() {
+        Post post = new Post("Test3 title","this is a test" );
+        postDao.save(post);
+        return "redirect:/posts";
     }
 
 
