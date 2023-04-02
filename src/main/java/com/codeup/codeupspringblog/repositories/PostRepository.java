@@ -23,5 +23,4 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query(nativeQuery = true, value = "SELECT title FROM posts WHERE LENGTH(title) < 10")
     List<String> getPostsOfCertainTitleLengthNative();
 
-
 }

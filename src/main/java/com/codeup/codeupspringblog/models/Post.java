@@ -14,21 +14,22 @@ public class Post {
     @Column(nullable = false, length = 100)
     private String title;
 
+
     @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
-    public Post() {
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
+    private User user;
 
+    public User getUser() {
+        return user;
     }
-    public Post(String title, String body){
-        this.title = title;
-        this.body = body;
+
+    public void setUser(User user) {
+        this.user = user;
     }
-    public Post(long id, String title, String body) {
-        this.id = id;
-        this.title = title;
-        this.body = body;
-    }
+
 
     public long getId() {
         return id;
@@ -54,12 +55,16 @@ public class Post {
         this.body = body;
     }
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", body='" + body + '\'' +
-                '}';
+    public Post() {
+
+    }
+    public Post(String title, String body){
+        this.title = title;
+        this.body = body;
+    }
+    public Post(long id, String title, String body) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
     }
 }
