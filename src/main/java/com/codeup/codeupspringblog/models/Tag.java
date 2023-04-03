@@ -22,12 +22,24 @@ public class Tag {
     public Tag() {
     }
 
+    public Tag(String name) {
+        this.name = name;
+    }
+
+    public Tag(Set<Post> posts) {
+        this.posts = posts;
+    }
+
     public Tag(String name, Set<Post> posts) {
         this.name = name;
         this.posts = posts;
     }
 
-
+    public Tag(long id, String name, Set<Post> posts) {
+        this.id = id;
+        this.name = name;
+        this.posts = posts;
+    }
 
     public long getId() {
         return id;
