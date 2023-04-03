@@ -15,7 +15,11 @@
 	<ul class="nav-row">
 		<li><a href="#">Home</a></li>
 		<li><a href="#">Posts</a></li>
-		<li><a href="#">Roll Dice</a></li>
+		<li>
+			<form th:action="@{/logout}" th:method="post">
+				<button class="btn-link btn" style="margin-top: 8px">Logout</button>
+			</form>
+		</li>
 	</ul>
 </nav>
 

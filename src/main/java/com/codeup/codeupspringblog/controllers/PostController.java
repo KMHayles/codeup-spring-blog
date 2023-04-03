@@ -56,6 +56,7 @@ public class PostController {
         return "redirect:/posts";
     }
 
+    //edit users post(GET)
     @GetMapping("/posts/{id}/edit")
     public String showEditPostView(@PathVariable("id") Long id, Model model){
         Post editPost = postDao.findById(id).get();
@@ -63,6 +64,7 @@ public class PostController {
         return "posts/edit";
     }
 
+    //edit users post(POST)
     @PostMapping("/posts/{id}/edit")
     public String editPost(@ModelAttribute Post post, @PathVariable Long id) {
         Post editedPost = postDao.findById(id).get();
