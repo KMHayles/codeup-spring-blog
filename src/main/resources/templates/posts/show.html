@@ -7,10 +7,10 @@
 <body>
 
 <h1>Individual posts</h1>
-
-<p th:text="${post.title}"></p>
-<p th:text="${post.body}"></p>
-<p th:text="${post.user.id}"></p>
+<div th:object="${post}">
+	<p th:text="*{title}"></p>
+	<p th:text="*{body}"></p>
+</div>
 
 </body>
 </html>

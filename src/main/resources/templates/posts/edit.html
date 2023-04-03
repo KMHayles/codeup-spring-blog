@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<h1>Edit Post</h1>
+<form th:action="@{/posts}" th:method="post" th:object="${posts}">
+	Title:
+	<br>
+	<input th:field="*{title}" placeholder="title"/>
+	<br>
+	Body:
+	<br>
+	<textarea th:field="*{body}" placeholder="body" cols="30" rows="5"></textarea>
+	<br>
+	<div>
+		<button type="submit" value="Create Post">Submit</button>
+	</div>
+</form>
+
+
+</body>
+</html>

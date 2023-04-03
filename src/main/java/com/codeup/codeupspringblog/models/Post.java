@@ -58,6 +58,15 @@ public class Post {
     public Post() {
 
     }
+
+    public Post(String title) {
+        this.title = title;
+    }
+
+    public Post(User user) {
+        this.user = user;
+    }
+
     public Post(String title, String body){
         this.title = title;
         this.body = body;

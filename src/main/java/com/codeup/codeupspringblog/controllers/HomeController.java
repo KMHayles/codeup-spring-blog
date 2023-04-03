@@ -1,4 +1,5 @@
 package com.codeup.codeupspringblog.controllers;
+import com.codeup.codeupspringblog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,8 +12,5 @@ public class HomeController {
     public String response(){
         return "This is the landing page!";
     }
-
-
-
 
 }
