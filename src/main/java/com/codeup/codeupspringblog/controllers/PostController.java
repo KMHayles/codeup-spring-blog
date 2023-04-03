@@ -50,19 +50,17 @@ public class PostController {
     public String createPOST(@ModelAttribute Post post) {
         User user = userDao.findById(1);
         post.setUser(user);
-        postDao.save(post);
-
         emailService.prepareAndSend("New Post","You created a new post");
         System.out.println("User created new post");
-
+        postDao.save(post);
         return "redirect:/posts";
     }
 
     @GetMapping("/posts/{id}/edit")
     public String showEditPostView(@PathVariable("id") Long id, Model model){
         Post editPost = postDao.findById(id).get();
-        model.addAttribute("post",editPost);
-        return "post/edit";
+        model.addAttribute("posts",editPost);
+        return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/edit")
@@ -71,7 +69,7 @@ public class PostController {
         editedPost.setTitle(post.getTitle());
         editedPost.setBody(post.getBody());
         postDao.save(editedPost);
-        return "redirect:/posts/" + id +"/find";
+        return "redirect:/posts";
     }
 
 
