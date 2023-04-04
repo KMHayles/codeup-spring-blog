@@ -4,6 +4,7 @@ import com.codeup.codeupspringblog.config.SecurityConfiguration;
 import com.codeup.codeupspringblog.models.Post;
 import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.UserRepository;
+import com.codeup.codeupspringblog.services.UserDetailsLoader;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +22,12 @@ public class UserController {
 
     private final PasswordEncoder passwordEncoder;
 
-    private final SecurityConfiguration;
+    private final UserDetailsLoader usersLoader;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, UserDetailsLoader usersLoader)  {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+        this.usersLoader = usersLoader;
     }
 
     @GetMapping("/register")
