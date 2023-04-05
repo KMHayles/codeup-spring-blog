@@ -8,10 +8,7 @@ import com.codeup.codeupspringblog.services.UserDetailsLoader;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,15 +28,18 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String showRegistrationForm() {
-        return "/main/resources/templates/users/register.html";
+    public String showSignupForm(Model model){
+        model.addAttribute("user", new User());
+        return "users/register";
     }
 
     @PostMapping("/register")
-    public String registerUser(@RequestParam(name="username") String username, @RequestParam(name="email") String email, @RequestParam(name="password") String password){
-        User user = new User(username, email, password);
+    public String saveUser(@ModelAttribute User user){
+        String hash = passwordEncoder.encode(user.getPassword());
+        System.out.println(hash);
+        user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/posts";
+        return "redirect:/login";
     }
 
     @GetMapping("/user/{id}/posts")
@@ -50,7 +50,5 @@ public class UserController {
         return "/posts/show";
 
     }
-
-
 
 }

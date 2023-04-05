@@ -24,7 +24,7 @@ public class User {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Post> posts;
 
-    //getters and setters
+//getters and setters
     public long getId() {
         return id;
     }
@@ -65,7 +65,7 @@ public class User {
         this.posts = posts;
     }
 
-    //constructors
+//constructors
     public User() {
     }
     public User(String username, String email, String password) {
@@ -96,5 +96,6 @@ public class User {
         password = copy.password;
         posts = copy.posts;
     }
+    //This copy contractor will be used in order to fulfill the contract defined by the interfaces in the security package.
 
 }

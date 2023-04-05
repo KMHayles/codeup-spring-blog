@@ -52,6 +52,8 @@ public class PostController {
         post.setUser(user);
         emailService.prepareAndSend("New Post","You created a new post");
         System.out.println("User created new post");
+        //will pull out user object in a POST that saves the correct user and sets the user on the post prior to the database.
+        //(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()
         postDao.save(post);
         return "redirect:/posts";
     }

@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<nav th:replace="partials/navbar :: navbar"></nav>
+
 <h1>Individual posts</h1>
 <div th:object="${post}">
 	<p th:text="*{title}"></p>
