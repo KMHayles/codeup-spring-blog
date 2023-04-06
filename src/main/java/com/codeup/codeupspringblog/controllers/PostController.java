@@ -5,6 +5,7 @@ import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -50,10 +51,9 @@ public class PostController {
     public String createPOST(@ModelAttribute Post post) {
         User user = userDao.findById(1);
         post.setUser(user);
+        //(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         emailService.prepareAndSend("New Post","You created a new post");
         System.out.println("User created new post");
-        //will pull out user object in a POST that saves the correct user and sets the user on the post prior to the database.
-        //(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()
         postDao.save(post);
         return "redirect:/posts";
     }
