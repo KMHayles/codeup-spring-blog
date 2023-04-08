@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Index</title>
+	<link rel="stylesheet" href="/static/css/navbar.css">
 </head>
 <body>
 
@@ -10,9 +11,13 @@
 
 <h3>Post</h3>
 
-<div th:each="post : ${posts}">
-	<h3 th:text="${post.title}"></h3>
-	<p th:text="${post.body}"></p>
+<div class="page-wrapper">
+
+	<div th:each="post : ${posts}">
+		<h3 th:text="${post.title}"></h3>
+		<p th:text="${post.body}"></p>
+	</div>
+
 </div>
 
 <footer th:replace="partials/navbar :: footer"></footer>

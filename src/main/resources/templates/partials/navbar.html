@@ -8,7 +8,6 @@
 <body>
 
 <nav th:fragment="navbar">
-	<link rel="stylesheet" href="/css/navbar.css">
 	<ul class="nav-row">
 		<li sec:authorize="isAuthenticated()">
 			<a href="posts/create">Create</a>
