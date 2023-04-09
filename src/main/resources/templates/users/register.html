@@ -5,7 +5,9 @@
   <title>Register for Adlister</title>
 </head>
 <body>
-<h1>Register for Adlister</h1>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<h1>Register to Post your Blog</h1>
 <form th:action="@{/register}" th:method="post">
   <label for="username">Username:</label>
   <input type="text" name="username" id="username">
