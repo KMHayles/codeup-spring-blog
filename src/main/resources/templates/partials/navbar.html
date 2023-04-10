@@ -1,30 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
 	<meta charset="UTF-8">
 	<title>Navbar</title>
-	<link rel="stylesheet" href="/static/css/navbar.css">
-
+	<link rel="stylesheet" th:href="@{/static/css/navbar.css}">
 </head>
 <body>
 
-<nav th:fragment="navbar" style="display: flex">
-	<ul class="nav-row">
-		<li sec:authorize="isAuthenticated()">
+<nav th:fragment="navbar">
+	<div class="nav-bar">
+		<div class="nav-link" sec:authorize="isAuthenticated()">
 			<a href="posts/create">Create</a>
-		</li>
-		<li><a href="/posts">Posts</a></li>
-		<li><a href="/posts">Home</a></li>
-		<li sec:authorize="!isAuthenticated()">
+		</div>
+		<div class="nav-link"><a href="/posts">Posts</a></div>
+		<div class="nav-link"><a href="/">Home</a></div>
+		<div class="nav-link" sec:authorize="!isAuthenticated()">
 			<a href="/login">Login</a>
-		</li>
-		<li sec:authorize="isAuthenticated()">
+		</div>
+		<div class="nav-link" sec:authorize="isAuthenticated()">
 			<form th:action="@{/logout}" th:method="post">
 				<button class="btn-link btn" style="margin-top: 8px">Logout</button>
 			</form>
-		</li>
-	</ul>
+		</div>
+	</div>
 </nav>
 
 <footer th:fragment="footer">
