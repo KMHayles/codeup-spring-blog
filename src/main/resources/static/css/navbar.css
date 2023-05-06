@@ -4,14 +4,8 @@ body {
     display: flex;
 }
 
-
-.page-wrapper {
-    background-color: #b41313;
-    border: red;
-}
-
 .nav-link {
-    background-color: #fa0505;
+    text-transform: uppercase;
     display: flex;
     align-items: flex-end;
     justify-content: center;
